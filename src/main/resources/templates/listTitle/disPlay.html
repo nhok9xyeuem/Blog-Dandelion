@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Dandelion</title>
+</head>
+<body>
+<a href="/create-blog" >CREATE NEW BLOG</a>
+<hr>
+<th:block th:if="${message}">
+    <h6 th:text="${message}"></h6>
+</th:block>
+<hr>
+<br>
+<h2 style="text-align: center ; color: red"  >Category </h2>
+<table border="1px">
+    <th:block th:each="blog:${blogs}">
+        <tr >
+            <td ><a th:text="${blog.title}" th:href="@{/content/__${blog.id}__}">
+            </a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/blog'(page=${blogs.number - 1})}" th:if="${blogs.hasPrevious()}">Previous</a>
+    <span th:text="${blogs.number + 1}"></span>/<span th:text="${blogs.totalPages}"></span>
+    <a th:href="@{'/blog'(page=${blogs.number + 1})}" th:if="${blogs.hasNext()}">Next</a>
+</div>
+</body>
+</html>
