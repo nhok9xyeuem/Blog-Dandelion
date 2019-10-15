@@ -10,9 +10,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Optional;
 
 @Controller
 public class TitleController {
@@ -33,6 +36,15 @@ public class TitleController {
         modelAndView.addObject("titles",titles);
         return modelAndView;
     }
+    @GetMapping("/content/{id}")
+    public ModelAndView contentDisPlay(@PathVariable Long id){
+        Optional<Title> title = titleService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("content/disPlay");
+        modelAndView.addObject("title",title);
+        return modelAndView;
+    }
+
+
     @GetMapping("/create-title")
     public ModelAndView titleFormCreate(){
         ModelAndView modelAndView = new ModelAndView("title/create");
