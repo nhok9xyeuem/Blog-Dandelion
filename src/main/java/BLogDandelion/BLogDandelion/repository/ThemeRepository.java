@@ -1,7 +1,7 @@
-//package BLogDandelion.BLogDandelion.repository;
-//
-//import BLogDandelion.BLogDandelion.model.ThemeBlog;
-//import org.springframework.data.repository.PagingAndSortingRepository;
-//
-//public interface ThemeRepository extends PagingAndSortingRepository<ThemeBlog,Long> {
-//}
+package BLogDandelion.BLogDandelion.repository;
+
+import BLogDandelion.BLogDandelion.model.Theme;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface ThemeRepository extends PagingAndSortingRepository<Theme,Long> {
+}

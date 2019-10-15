@@ -1,17 +1,17 @@
 package BLogDandelion.BLogDandelion.service;
 
-import BLogDandelion.BLogDandelion.model.Blog;
+import BLogDandelion.BLogDandelion.model.Title;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
-public interface BlogService {
-    Page<Blog> findAll(Pageable pageable);
+public interface TitleService {
+    Page<Title> findAll(Pageable pageable);
 
-    Optional<Blog> findById(Long id);
+    Optional<Title> findById(Long id);
 
-    void save(Blog blog);
+    void save(Title blog);
 
     void remove(Long id);
 

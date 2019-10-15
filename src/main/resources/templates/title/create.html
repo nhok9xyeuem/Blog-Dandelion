@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/create}" th:object="${blog}" method="post">
+<form th:action="@{/create}" th:object="${titles}" method="post">
+
     <table border="1px">
         <tr>
             <td><input type="text" th:field="*{title}"></td>
@@ -14,8 +15,8 @@
             <td><input type="text" th:field="*{content}"></td>
         </tr>
         <tr>
-            <td><select th:field="*{themeBlog}">
-                <option th:each="themes : ${themeList}" th:value="${themes.id}" th:text="${themes.theme}"></option>
+            <td><select th:field="*{theme}">
+                <option th:each="themes : ${theme}" th:value="${themes.id}" th:text="${themes.theme}"></option>
             </select></td>
         </tr>
 

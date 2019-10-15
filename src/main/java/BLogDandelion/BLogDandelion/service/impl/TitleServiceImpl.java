@@ -1,30 +1,30 @@
 package BLogDandelion.BLogDandelion.service.impl;
 
-import BLogDandelion.BLogDandelion.model.Blog;
-import BLogDandelion.BLogDandelion.repository.BlogRepository;
-import BLogDandelion.BLogDandelion.service.BlogService;
+import BLogDandelion.BLogDandelion.model.Title;
+import BLogDandelion.BLogDandelion.repository.TitleRepository;
+import BLogDandelion.BLogDandelion.service.TitleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
-public class BlogServiceImpl implements BlogService {
+public class TitleServiceImpl implements TitleService {
     @Autowired
-    private BlogRepository blogRepository;
+    private TitleRepository blogRepository;
 
     @Override
-    public Page<Blog> findAll(Pageable pageable) {
+    public Page<Title> findAll(Pageable pageable) {
         return blogRepository.findAll(pageable);
     }
 
     @Override
-    public Optional<Blog> findById(Long id) {
+    public Optional<Title> findById(Long id) {
         return blogRepository.findById(id);
     }
 
     @Override
-    public void save(Blog blog) {
+    public void save(Title blog) {
         blogRepository.save(blog);
     }
 

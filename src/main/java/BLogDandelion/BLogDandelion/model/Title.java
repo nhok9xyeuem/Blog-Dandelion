@@ -1,36 +1,34 @@
 package BLogDandelion.BLogDandelion.model;
 
-
 import javax.persistence.*;
 
-
 @Entity
-@Table(name = "listTittle")
-public class Blog {
+@Table(name = "title")
+public class Title {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String content;
-//    @ManyToOne
-//    @JoinColumn(name = "themelist_id")
-//    private ThemeBlog themeBlog;
+    @ManyToOne
+    @JoinColumn(name = "theme_id")
+    private Theme theme;
 
-    public Blog() {
+    public Title() {
     }
 
-//    public ThemeBlog getThemeBlog() {
-//        return themeBlog;
-//    }
-//
-//    public void setThemeBlog(ThemeBlog themeBlog) {
-//        this.themeBlog = themeBlog;
-//    }
+    public Theme getTheme() {
+        return theme;
+    }
 
-    public Blog(String title, String content ) {
+    public void setTheme(Theme theme) {
+        this.theme = theme;
+    }
+
+    public Title(String title, String content ) {
         this.title = title;
         this.content = content;
-//        this.themeBlog=themeBlog;
+
     }
 
     public Long getId() {
