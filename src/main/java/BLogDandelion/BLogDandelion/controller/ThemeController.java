@@ -52,5 +52,19 @@ public class ThemeController {
         redirectAttributes.addFlashAttribute("message", "CREATE NEW THEME BLOG");
         return modelAndView;
     }
+    @GetMapping("/edit-theme/{id}")
+    public ModelAndView themeEditForm(@PathVariable Long id ){
+        Optional<Theme> theme = themeService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("theme/edit");
+        modelAndView.addObject("themes",theme.get());
+        return modelAndView;
+    }
+    @PostMapping("/change")
+    public ModelAndView themeChange(@ModelAttribute ("themes") Theme theme , RedirectAttributes redirectAttributes){
+        themeService.save(theme);
+        ModelAndView modelAndView = new ModelAndView("redirect:/theme");
+        redirectAttributes.addFlashAttribute("message", "CHANGE NEW THEME BLOG");
+        return modelAndView;
+    }
 
 }
