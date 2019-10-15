@@ -24,13 +24,14 @@ public class TitleServiceImpl implements TitleService {
     }
 
     @Override
-    public void save(Title blog) {
-        blogRepository.save(blog);
+    public void save(Title title) {
+        blogRepository.save(title);
     }
 
     @Override
-    public void remove(Long id) {
+    public Title remove(Long id) {
         blogRepository.deleteById(id);
+        return null;
     }
 
 }

@@ -12,7 +12,7 @@ public interface ThemeService {
 
        Optional<Theme> findById(Long id);
 
-        void save(Theme themeBlog);
+        void save(Theme theme);
 
         void remove(Long id);
 

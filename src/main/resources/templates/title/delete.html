@@ -8,14 +8,14 @@
 <hr>
 <a href="/title">Back view Home</a>
 <hr>
-<form th:action="@{/delete/__${id}__}" th:object="${blog}" method="post">
+<form th:action="@{/delete/__${id}__}" th:object="${title}" method="post">
     <td><input type="hidden" th:value="${id}" th:field="*{id}"></td>
     <table border="1px">
         <tr>
-            <th th:text="${blog.title}"></th>
+            <th th:text="${title.title}"></th>
         </tr>
         <tr>
-            <th th:text="${blog.themeBlog}"></th>
+            <th th:text="${title.getTheme().theme}"></th>
         </tr>
     </table>
     <br>

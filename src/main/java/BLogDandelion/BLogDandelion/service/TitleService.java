@@ -11,8 +11,8 @@ public interface TitleService {
 
     Optional<Title> findById(Long id);
 
-    void save(Title blog);
+    void save(Title title);
 
-    void remove(Long id);
+    Title remove(Long id);
 
 }

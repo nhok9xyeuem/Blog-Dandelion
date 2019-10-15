@@ -1,5 +1,6 @@
 package BLogDandelion.BLogDandelion;
 
+import BLogDandelion.BLogDandelion.formatter.ThemeFormatter;
 import BLogDandelion.BLogDandelion.service.TitleService;
 import BLogDandelion.BLogDandelion.service.ThemeService;
 import BLogDandelion.BLogDandelion.service.impl.TitleServiceImpl;
@@ -11,6 +12,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.Formatter;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
@@ -40,12 +43,12 @@ public class BLogDandelionApplication {
             appContext = applicationContext;
         }
 
-//        @Override
-//        public void addFormatters(FormatterRegistry registry) {
-//            ThemeService themeService = appContext.getBean(ThemeService.class);
-//            Formatter provinceFormatter = new BlogFormater(themeService);
-//            registry.addFormatter(provinceFormatter);
-//        }
+        @Override
+        public void addFormatters(FormatterRegistry registry) {
+            ThemeService themeService = appContext.getBean(ThemeService.class);
+            Formatter themeFormatter = new ThemeFormatter(themeService);
+            registry.addFormatter(themeFormatter);
+        }
 
     }
 }

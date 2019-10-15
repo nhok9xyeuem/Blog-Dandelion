@@ -10,11 +10,11 @@
 <h2 style="text-align: center ; color: red"  >Category </h2>
 <br>
 <br>
-<a th:href="@{/edit-title/__${title.get().id}__}">edit</a> | <a th:href="@{/delete-title/__${title.get().id}__}">delete</a>
+<a th:href="@{/edit-title/__${id}__}">edit</a> | <a th:href="@{/delete-title/__${id}__}">delete</a>
 
 <br>
 <th:block >
-    <p th:text="${title.get().content}">
+    <p  th:text="${title.get().content}"></p>
 </th:block>
 </body>
 </html>

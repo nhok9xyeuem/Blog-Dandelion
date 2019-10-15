@@ -25,9 +25,10 @@ public class Title {
         this.theme = theme;
     }
 
-    public Title(String title, String content ) {
+    public Title(String title, String content,Theme theme) {
         this.title = title;
         this.content = content;
+        this.theme=theme;
 
     }
 
