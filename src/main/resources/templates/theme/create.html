@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/create}" th:object="${themeBlog}" method="post">
+<form th:action="@{/create-newTheme}" th:object="${themes}" method="post">
     <table border="1px">
         <tr>
             <td><input type="text" th:field="*{theme}" placeholder="Input Theme OF Blog"></td>

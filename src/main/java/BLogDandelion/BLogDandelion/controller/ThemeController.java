@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -40,6 +37,19 @@ public class ThemeController {
         themeService.remove(id);
         ModelAndView modelAndView = new ModelAndView("redirect:/theme");
         redirectAttributes.addFlashAttribute("message", "DELETE THEME FINISH");
+        return modelAndView;
+    }
+    @GetMapping("/create-theme")
+    public ModelAndView themeCreateForm(){
+    ModelAndView modelAndView = new ModelAndView("theme/create");
+    modelAndView.addObject("themes", new Theme());
+    return modelAndView;
+    }
+    @PostMapping("/create-newTheme")
+    public ModelAndView themeCreate(@ModelAttribute("themes") Theme theme,RedirectAttributes redirectAttributes){
+        themeService.save(theme);
+        ModelAndView modelAndView = new ModelAndView("redirect:/theme");
+        redirectAttributes.addFlashAttribute("message", "CREATE NEW THEME BLOG");
         return modelAndView;
     }
 
