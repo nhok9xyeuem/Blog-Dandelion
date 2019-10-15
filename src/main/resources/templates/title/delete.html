@@ -8,7 +8,7 @@
 <hr>
 <a href="/title">Back view Home</a>
 <hr>
-<form th:action="@{/delete/__${id}__}" th:object="${title}" method="post">
+<form th:action="@{/delete}" th:object="${title}" method="post">
     <td><input type="hidden" th:value="${id}" th:field="*{id}"></td>
     <table border="1px">
         <tr>

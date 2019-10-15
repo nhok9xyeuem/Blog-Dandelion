@@ -62,7 +62,7 @@ public class TitleController {
         modelAndView.addObject("title",title.get());
         return modelAndView;
     }
-    @PostMapping("/delete/{id}")
+    @PostMapping("/delete")
     public ModelAndView titleDelete(@RequestParam Long id, RedirectAttributes redirectAttributes){
         titleService.remove(id);
         ModelAndView modelAndView = new ModelAndView("redirect:/title");
@@ -77,7 +77,7 @@ public class TitleController {
         modelAndView.addObject("titles",titles.get());
         return modelAndView;
     }
-    @PostMapping("/update/{id}")
+    @PostMapping("/update")
     public ModelAndView titleUpdate(@ModelAttribute("titles") Title title,RedirectAttributes redirectAttributes){
         titleService.save(title);
         ModelAndView modelAndView = new ModelAndView("redirect:/title");

@@ -8,7 +8,7 @@
 <hr>
 <a href="/title">Back view Home</a>
 <hr>
-<form  th:action="@{/update/__${id}__}" th:object="${titles}"
+<form  th:action="@{/update}" th:object="${titles}"
        method="post" novalidate="novalidate">
     <td><input type="hidden" th:value="${id}" th:field="*{id}"></td>
     <table border="1px">
