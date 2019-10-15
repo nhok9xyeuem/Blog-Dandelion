@@ -30,6 +30,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public void remove(Long id) {
-    blogRepository.deleteById(id);
+        blogRepository.deleteById(id);
     }
+
 }

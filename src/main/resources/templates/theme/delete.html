@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr>
+<a href="/theme">Back view Home</a>
+<hr>
+<form th:action="@{/delete/__${id}__}" th:object="${theme}" method="post">
+    <td><input type="hidden" th:value="${id}" th:field="*{id}"></td>
+    <table border="1px">
+        <tr>
+            <th th:text="${theme.theme}"></th>
+        </tr>
+    </table>
+    <br>
+    <td><input type="submit" value="Delete"></td>
+</form>
+</body>
+</html>

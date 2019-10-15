@@ -10,6 +10,8 @@
 <h2 style="text-align: center ; color: red"  >Category </h2>
 <br>
 <br>
+<a th:href="@{/edit-blog/__${blog.id}__}">edit</a> | <a th:href="@{/delete-blog/__${blog.id}__}">delete</a>
+
 <br>
 <th:block >
     <p th:text="${blog.content}">

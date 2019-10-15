@@ -13,15 +13,16 @@
         <tr>
             <td><input type="text" th:field="*{content}"></td>
         </tr>
-<!--        <tr>-->
-<!--            <td><select th:field="*{province}">-->
-<!--                <option th:each="provin : ${province}" th:value="${provin.id}" th:text="${provin.nameProvince}"></option>-->
-<!--            </select></td>-->
-<!--        </tr>-->
         <tr>
-            <td><input type="submit" value="Create New Blog"></td>
+            <td><select th:field="*{themeBlog}">
+                <option th:each="themes : ${themeList}" th:value="${themes.id}" th:text="${themes.theme}"></option>
+            </select></td>
         </tr>
+
     </table>
+    <br>
+        <td><input type="submit" value="Create New Blog"></td>
+    <br>
 </form>
 </body>
 </html>

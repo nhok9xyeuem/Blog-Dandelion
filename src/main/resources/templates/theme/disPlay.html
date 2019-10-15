@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Dandelion</title>
+</head>
+<body>
+<a href="/create-theme" >CREATE NEW THEME BLOG</a>
+<hr>
+<th:block th:if="${message}">
+    <h6 th:text="${message}"></h6>
+</th:block>
+<hr>
+<br>
+<h2 style="text-align: center ; color: red"  >Category </h2>
+<table border="1px">
+    <th:block th:each="themes:${themeBlogs}">
+        <tr >
+            <td ><a th:text="${themes.theme}" th:href="@{/author/__${themes.id}__}">List Theme
+            </a></td>
+            <td><a th:href="@{/edit-theme/__${themes.id}__}">edit</a> </td>
+            <td><a th:href="@{/delete-theme/__${themes.id}__}">delete</a> </td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

@@ -7,6 +7,11 @@
 <body>
 <a href="/create-blog" >CREATE NEW BLOG</a>
 <hr>
+<!--<form>-->
+<!--    <input type="text" name="search" th:value="${search}" placeholder="Search">-->
+<!--    <input type="submit" value="Search">-->
+<!--</form>-->
+<hr>
 <th:block th:if="${message}">
     <h6 th:text="${message}"></h6>
 </th:block>
@@ -18,6 +23,7 @@
         <tr >
             <td ><a th:text="${blog.title}" th:href="@{/content/__${blog.id}__}">
             </a></td>
+            <td th:text="${blog.themeBlog.theme}"></td>
         </tr>
     </th:block>
 </table>

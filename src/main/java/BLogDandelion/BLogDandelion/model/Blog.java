@@ -12,13 +12,25 @@ public class Blog {
     private Long id;
     private String title;
     private String content;
+//    @ManyToOne
+//    @JoinColumn(name = "themelist_id")
+//    private ThemeBlog themeBlog;
 
     public Blog() {
     }
 
-    public Blog(String title, String content) {
+//    public ThemeBlog getThemeBlog() {
+//        return themeBlog;
+//    }
+//
+//    public void setThemeBlog(ThemeBlog themeBlog) {
+//        this.themeBlog = themeBlog;
+//    }
+
+    public Blog(String title, String content ) {
         this.title = title;
         this.content = content;
+//        this.themeBlog=themeBlog;
     }
 
     public Long getId() {
