@@ -14,5 +14,5 @@ public interface TitleService {
     void save(Title title);
 
     Title remove(Long id);
-
+    Page<Title> findAllByTitleContaining(String title, Pageable pageable);
 }

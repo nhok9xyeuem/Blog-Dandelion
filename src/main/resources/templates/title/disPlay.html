@@ -7,10 +7,10 @@
 <body>
 <a href="/create-title" >CREATE NEW BLOG</a>
 <hr>
-<!--<form>-->
-<!--    <input type="text" name="search" th:value="${search}" placeholder="Search">-->
-<!--    <input type="submit" value="Search">-->
-<!--</form>-->
+<form>
+    <input type="text" name="search" th:value="${search}" placeholder="Search">
+    <input type="submit" value="Search">
+</form>
 <hr>
 <th:block th:if="${message}">
     <h6 th:text="${message}"></h6>

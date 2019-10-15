@@ -34,4 +34,9 @@ public class TitleServiceImpl implements TitleService {
         return null;
     }
 
+    @Override
+    public Page<Title> findAllByTitleContaining(String title, Pageable pageable) {
+        return blogRepository.findAllByTitleContaining(title, pageable);
+    }
+
 }
