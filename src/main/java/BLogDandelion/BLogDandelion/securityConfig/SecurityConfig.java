@@ -46,7 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(
                         "/title",
-                        "/login"
+                        "/login",
+                        "/theme"
                         //                so tang tat ca moi ng vao duoc
                 ).permitAll()
 
