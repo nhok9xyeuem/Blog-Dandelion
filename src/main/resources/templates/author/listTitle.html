@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Dandelion</title>
+</head>
+<body>
+<br>
+<h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
+<hr>
+<br>
+<h4 style="text-align: center ; color: red"  ><a th:text="${authors.get().author}"></a></h4>
+<br>
+<br>
+<br>
+<th:block >
+    <p th:each="list:${listTitleByAuthor}">
+        <tr>
+            <td th:text="${list.title}"></td>
+        </tr>
+    </p>
+</th:block>
+</body>
+</html>
