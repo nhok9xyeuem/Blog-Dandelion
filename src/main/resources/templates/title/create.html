@@ -5,7 +5,7 @@
     <title>CREATE</title>
 </head>
 <body>
-<<br>
+<br>
 <h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
 <hr>
 <br>
@@ -21,6 +21,11 @@
         <tr>
             <td><select th:field="*{theme}">
                 <option th:each="themes : ${theme}" th:value="${themes.id}" th:text="${themes.theme}"></option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><select th:field="*{author}">
+                <option th:each="authors : ${author}" th:value="${authors.id}" th:text="${authors.author}"></option>
             </select></td>
         </tr>
 
