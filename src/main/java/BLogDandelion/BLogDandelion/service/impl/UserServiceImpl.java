@@ -6,7 +6,9 @@ import BLogDandelion.BLogDandelion.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
     /**
      * Locates the user based on the username. In the actual implementation, the search
@@ -31,12 +33,24 @@ public class UserServiceImpl implements UserService {
 
             throw new UsernameNotFoundException(username);
         }
-        boolean enable = true;
-        boolean accountNonExpired = true;
-        boolean credentialsNonExpired = true;
-        boolean accountNonLocked=true;
 
-        return new org.springframework.security.core.userdetails.User(user.getUserName(),user.getPassword(),enable,
-                accountNonExpired,credentialsNonExpired,accountNonLocked,null);
+        return user;
+    }
+    @Override
+    public boolean checkLogin(User user) {
+        Iterable<User> users = this.findAll();
+        boolean isCorrectUser = false;
+        for (User currentUser : users) {
+            if (currentUser.getUserName().equals(user.getUserName())
+                    && user.getPassword().equals(currentUser.getPassword())) {
+                isCorrectUser = true;
+            }
+        }
+        return isCorrectUser;
+    }
+
+    @Override
+    public Iterable<User> findAll() {
+        return repository.findAll();
     }
 }
