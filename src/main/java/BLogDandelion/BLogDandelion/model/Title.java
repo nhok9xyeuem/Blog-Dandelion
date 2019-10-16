@@ -14,9 +14,29 @@ public class Title {
     @JoinColumn(name = "theme_id")
     private Theme theme;
 
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+
     public Title() {
     }
 
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Title(String title, String content, Theme theme , Author author) {
+        this.title = title;
+        this.content = content;
+        this.theme=theme;
+        this.author=author;
+
+    }
     public Theme getTheme() {
         return theme;
     }
@@ -24,14 +44,6 @@ public class Title {
     public void setTheme(Theme theme) {
         this.theme = theme;
     }
-
-    public Title(String title, String content,Theme theme) {
-        this.title = title;
-        this.content = content;
-        this.theme=theme;
-
-    }
-
     public Long getId() {
         return id;
     }

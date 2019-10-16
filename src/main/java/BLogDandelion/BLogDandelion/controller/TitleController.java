@@ -1,7 +1,9 @@
 package BLogDandelion.BLogDandelion.controller;
 
+import BLogDandelion.BLogDandelion.model.Author;
 import BLogDandelion.BLogDandelion.model.Theme;
 import BLogDandelion.BLogDandelion.model.Title;
+import BLogDandelion.BLogDandelion.service.AuthorService;
 import BLogDandelion.BLogDandelion.service.ThemeService;
 import BLogDandelion.BLogDandelion.service.TitleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +19,18 @@ import java.util.Optional;
 
 @Controller
 public class TitleController {
+    @Autowired
+    private AuthorService authorService;
 
     @Autowired
     TitleService titleService;
     @Autowired
     ThemeService themeService;
+
+    @ModelAttribute("author")
+    public Page<Author> authors(Pageable pageable) {
+        return authorService.findAll(pageable);
+    }
 
     @ModelAttribute("theme")
     public Page<Theme> themes(Pageable pageable) {
@@ -29,7 +38,7 @@ public class TitleController {
     }
 
     @GetMapping("/")
-    public ModelAndView titleDisPlay(@RequestParam(value = "search", defaultValue = "") String search,@PageableDefault(size = 2) Pageable pageable) {
+    public ModelAndView titleDisPlay(@RequestParam(value = "search", defaultValue = "") String search, @PageableDefault(size = 2) Pageable pageable) {
         Page<Title> titles;
         if (!search.isEmpty()) {
             titles = titleService.findAllByTitleContaining(search, pageable);
@@ -44,7 +53,6 @@ public class TitleController {
             return modelAndView;
         }
     }
-
 
 
     @GetMapping("/content/{id}")

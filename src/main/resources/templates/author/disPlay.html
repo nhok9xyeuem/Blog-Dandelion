@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AUTHOR OF BLOG DANDELION</title>
+</head>
+<body>
+<a href="/login" >LOGIN</a><br>
+<a href="/logout" >LOGOUT</a>
+<h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
+<br>
+<hr>
+<a href="/create-author" >CREATE NEW AUTHOR</a>
+<hr>
+<form>
+    <input type="text" name="search" th:value="${search}" placeholder="Search">
+    <input type="submit" value="Search">
+</form>
+<br>
+<th:block th:if="${message}">
+    <h6 th:text="${message}"></h6>
+</th:block>
+<hr>
+<br>
+<h2 style="text-align: center ; color: red"  >AUTHOR </h2>
+<table border="1px">
+    <th:block th:each="author:${authors}">
+        <tr >
+            <td ><a th:text="${author.author}" th:href="@{/author-title/__${author.id}__}">List Theme
+            </a></td>
+            <td><a th:href="@{/edit-author/__${author.id}__}">edit</a> </td>
+            <td><a th:href="@{/delete-author/__${author.id}__}">delete</a> </td>
+        </tr>
+    </th:block>
+</table>
+</table>
+</body>
+</html>
