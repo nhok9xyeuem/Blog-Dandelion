@@ -66,7 +66,7 @@ public class TitleController {
     @PostMapping("/create")
     public ModelAndView titleCreate(@ModelAttribute("titles") Title title, RedirectAttributes redirectAttributes) {
         titleService.save(title);
-        ModelAndView modelAndView = new ModelAndView("redirect:/title");
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
         redirectAttributes.addFlashAttribute("message", "CREATE NEW BLOG");
         return modelAndView;
     }
@@ -82,7 +82,7 @@ public class TitleController {
     @PostMapping("/delete")
     public ModelAndView titleDelete(@RequestParam Long id, RedirectAttributes redirectAttributes) {
         titleService.remove(id);
-        ModelAndView modelAndView = new ModelAndView("redirect:/title");
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
         redirectAttributes.addFlashAttribute("message", "FINISH DELETE BLOG");
         return modelAndView;
     }
@@ -98,7 +98,7 @@ public class TitleController {
     @PostMapping("/update")
     public ModelAndView titleUpdate(@ModelAttribute("titles") Title title, RedirectAttributes redirectAttributes) {
         titleService.save(title);
-        ModelAndView modelAndView = new ModelAndView("redirect:/title");
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
         redirectAttributes.addFlashAttribute("message", "FINISH UPDATE  BLOG");
         return modelAndView;
     }

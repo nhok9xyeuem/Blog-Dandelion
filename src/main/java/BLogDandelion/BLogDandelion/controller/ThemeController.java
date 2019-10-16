@@ -1,7 +1,9 @@
 package BLogDandelion.BLogDandelion.controller;
 
 import BLogDandelion.BLogDandelion.model.Theme;
+import BLogDandelion.BLogDandelion.model.Title;
 import BLogDandelion.BLogDandelion.service.ThemeService;
+import BLogDandelion.BLogDandelion.service.TitleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,12 +12,19 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class ThemeController {
     @Autowired
+    TitleService titleService;
+    @Autowired
     private ThemeService themeService;
+    @ModelAttribute("title")
+    public Page<Title> titles (Pageable pageable) {
+        return titleService.findAll(pageable);
+    }
 
     @GetMapping("/theme")
     public ModelAndView themeDisPlay(@RequestParam (value = "search",defaultValue = "") String search, Pageable pageable){
@@ -72,6 +81,15 @@ public class ThemeController {
         themeService.save(theme);
         ModelAndView modelAndView = new ModelAndView("redirect:/theme");
         redirectAttributes.addFlashAttribute("message", "CHANGE NEW THEME BLOG");
+        return modelAndView;
+    }
+    @GetMapping("theme-title/{id}")
+    public ModelAndView listTitleByTheme(@PathVariable Long id ){
+        Optional<Theme> theme = themeService.findById(id);
+        List<Title> listTitle = theme.get().getTitles();
+        ModelAndView modelAndView = new ModelAndView("theme/listTitle");
+        modelAndView.addObject("listTitle",listTitle);
+        modelAndView.addObject("themes",theme);
         return modelAndView;
     }
 

@@ -24,7 +24,7 @@
 <table border="1px">
     <th:block th:each="theme:${themes}">
         <tr >
-            <td ><a th:text="${theme.theme}" th:href="@{/author/__${theme.id}__}">List Theme
+            <td ><a th:text="${theme.theme}" th:href="@{/theme-title/__${theme.id}__}">List Theme
             </a></td>
             <td><a th:href="@{/edit-theme/__${theme.id}__}">edit</a> </td>
             <td><a th:href="@{/delete-theme/__${theme.id}__}">delete</a> </td>

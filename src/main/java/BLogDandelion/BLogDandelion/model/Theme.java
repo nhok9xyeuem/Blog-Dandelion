@@ -1,6 +1,7 @@
 package BLogDandelion.BLogDandelion.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,12 +12,12 @@ public class Theme {
     private Long id;
     private String theme;
     @OneToMany(mappedBy = "theme")
-    private Set<Title> titles;
+    private List<Title> titles;
 
     public Theme() {
     }
 
-    public Theme(String theme, Set<Title> titles) {
+    public Theme(String theme, List<Title> titles) {
         this.theme = theme;
         this.titles = titles;
     }
@@ -37,11 +38,11 @@ public class Theme {
         this.theme = theme;
     }
 
-    public Set<Title> getTitles() {
+    public List<Title> getTitles() {
         return titles;
     }
 
-    public void setTitles(Set<Title> titles) {
+    public void listTitles(List<Title> titles) {
         this.titles = titles;
     }
 }
