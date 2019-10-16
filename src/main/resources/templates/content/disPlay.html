@@ -5,13 +5,14 @@
     <title>Blog Dandelion</title>
 </head>
 <body>
+<br>
+<h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
 <hr>
 <br>
-<h2 style="text-align: center ; color: red"  >Category </h2>
+<h4 style="text-align: center ; color: red"  ><a th:text="${title.get().title}"></a></h4>
+<p style="text-align: center ; color: blue"><a th:href="@{/edit-title/__${id}__}">edit</a> | <a th:href="@{/delete-title/__${id}__}">delete</a></p>
 <br>
 <br>
-<a th:href="@{/edit-title/__${id}__}">edit</a> | <a th:href="@{/delete-title/__${id}__}">delete</a>
-
 <br>
 <th:block >
     <p  th:text="${title.get().content}"></p>

@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>Blog Dandelion</title>
 </head>
 <body>
+<br>
+<h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
+<hr>
+<br>
 <a href="/create-title" >CREATE NEW BLOG</a>
 <hr>
 <form>
     <input type="text" name="search" th:value="${search}" placeholder="Search">
     <input type="submit" value="Search">
 </form>
-<hr>
+<br>
 <th:block th:if="${message}">
     <h6 th:text="${message}"></h6>
 </th:block>
-<hr>
 <br>
-<h2 style="text-align: center ; color: red"  >Category </h2>
-<table border="1px">
+<br>
+<h2 style="text-align: center ; color: red"  >BLOG DANDELION </h2>
+<br>
+<br>
+<table>
     <th:block th:each="title:${titles}">
         <tr >
             <td ><a th:text="${title.title}" th:href="@{/content/__${title.id}__}">
@@ -28,9 +34,9 @@
     </th:block>
 </table>
 <div>
-    <a th:href="@{'/blog'(page=${titles.number - 1})}" th:if="${titles.hasPrevious()}">Previous</a>
+    <a th:href="@{'/'(search=${search},page=${titles.number - 1})}" th:if="${titles.hasPrevious()}">Previous</a>
     <span th:text="${titles.number + 1}"></span>/<span th:text="${titles.totalPages}"></span>
-    <a th:href="@{'/blog'(page=${titles.number + 1})}" th:if="${titles.hasNext()}">Next</a>
+    <a th:href="@{'/'(search=${search},page=${titles.number + 1})}" th:if="${titles.hasNext()}">Next</a>
 </div>
 </body>
 </html>

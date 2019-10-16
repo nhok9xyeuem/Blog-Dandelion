@@ -1,13 +1,13 @@
 package BLogDandelion.BLogDandelion.service.impl;
 
-        import BLogDandelion.BLogDandelion.model.Theme;
-        import BLogDandelion.BLogDandelion.repository.ThemeRepository;
-        import BLogDandelion.BLogDandelion.service.ThemeService;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.data.domain.Page;
-        import org.springframework.data.domain.Pageable;
+import BLogDandelion.BLogDandelion.model.Theme;
+import BLogDandelion.BLogDandelion.repository.ThemeRepository;
+import BLogDandelion.BLogDandelion.service.ThemeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-        import java.util.Optional;
+import java.util.Optional;
 
 public class ThemeServiceImpl implements ThemeService {
     @Autowired
@@ -30,6 +30,11 @@ public class ThemeServiceImpl implements ThemeService {
     @Override
     public void remove(Long id) {
         themeRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<Theme> findAllByThemeContaining(String theme, Pageable pageable) {
+        return themeRepository.findAllByThemeContaining(theme,pageable);
     }
 
 

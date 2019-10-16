@@ -16,5 +16,6 @@ public interface ThemeService {
 
         void remove(Long id);
 
+    Page<Theme> findAllByThemeContaining(String theme, Pageable pageable);
 
 }

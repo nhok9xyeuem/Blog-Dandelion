@@ -2,9 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>CREATE</title>
 </head>
 <body>
+<<br>
+<h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
+<hr>
+<br>
 <form th:action="@{/create}" th:object="${titles}" method="post">
 
     <table border="1px">

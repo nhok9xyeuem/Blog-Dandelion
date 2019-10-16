@@ -2,17 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Blog Dandelion</title>
+    <title>THEME BLOG DANDELION</title>
 </head>
 <body>
+<h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
+<br>
+<hr>
 <a href="/create-theme" >CREATE NEW THEME BLOG</a>
 <hr>
+<form>
+    <input type="text" name="search" th:value="${search}" placeholder="Search">
+    <input type="submit" value="Search">
+</form>
+<br>
 <th:block th:if="${message}">
     <h6 th:text="${message}"></h6>
 </th:block>
 <hr>
 <br>
-<h2 style="text-align: center ; color: red"  >Category </h2>
+<h2 style="text-align: center ; color: red"  >THEME </h2>
 <table border="1px">
     <th:block th:each="theme:${themes}">
         <tr >

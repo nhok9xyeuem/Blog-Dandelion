@@ -27,7 +27,7 @@ public class TitleController {
         return themeService.findAll(pageable);
     }
 
-    @GetMapping("/title")
+    @GetMapping("/")
     public ModelAndView titleDisPlay(@RequestParam(value = "search", defaultValue = "") String search, Pageable pageable) {
         Page<Title> titles;
         if (!search.isEmpty()) {
