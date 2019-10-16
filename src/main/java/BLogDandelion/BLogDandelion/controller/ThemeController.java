@@ -18,11 +18,19 @@ public class ThemeController {
     private ThemeService themeService;
 
     @GetMapping("/theme")
-    public ModelAndView themeDisPlay(Pageable pageable){
-        Page<Theme> theme = themeService.findAll(pageable);
-        ModelAndView modelAndView = new ModelAndView("theme/disPlay");
-        modelAndView.addObject("themes", theme);
-        return modelAndView;
+    public ModelAndView themeDisPlay(@RequestParam (value = "search",defaultValue = "") String search, Pageable pageable){
+        if (!search.isEmpty()){
+            Page<Theme> theme=themeService.findAllByThemeContaining(search,pageable);
+            ModelAndView modelAndView = new ModelAndView("theme/disPlay");
+            modelAndView.addObject("themes", theme);
+            modelAndView.addObject("search", search);
+            return modelAndView;
+        }else {
+            Page<Theme> theme = themeService.findAll(pageable);
+            ModelAndView modelAndView = new ModelAndView("theme/disPlay");
+            modelAndView.addObject("themes", theme);
+            return modelAndView;
+        }
     }
     @GetMapping("/delete-theme/{id}")
     public ModelAndView themeDeleteForm(@PathVariable Long id ){

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="https://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>Blog Dandelion</title>
@@ -29,7 +29,6 @@
         <tr >
             <td ><a th:text="${title.title}" th:href="@{/content/__${title.id}__}">
             </a></td>
-<!--            <td th:text="${blog.themeBlog.theme}"></td>-->
         </tr>
     </th:block>
 </table>

@@ -37,22 +37,5 @@ public class BLogDandelionApplication {
         return new ThemeServiceImpl();
     }
 
-    @Configuration
-    class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
 
-        private ApplicationContext appContext;
-
-        @Override
-        public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-            appContext = applicationContext;
-        }
-
-        @Override
-        public void addFormatters(FormatterRegistry registry) {
-            ThemeService themeService = appContext.getBean(ThemeService.class);
-            Formatter themeFormatter = new ThemeFormatter(themeService);
-            registry.addFormatter(themeFormatter);
-        }
-
-    }
 }
