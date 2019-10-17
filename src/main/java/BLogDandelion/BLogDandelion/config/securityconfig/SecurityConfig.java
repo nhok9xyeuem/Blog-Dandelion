@@ -56,6 +56,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE).access("hasRole('ROLE_ADMIN')")
                 // chinh dinh admin
                 .anyRequest().authenticated()
-                .and().formLogin().permitAll();
+                .and().formLogin().permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/");
     }
 }

@@ -38,7 +38,7 @@ public class TitleController {
     }
 
     @GetMapping("/")
-    public ModelAndView titleDisPlay(@RequestParam(value = "search", defaultValue = "") String search, @PageableDefault(size = 2) Pageable pageable) {
+    public ModelAndView titleDisPlay(@RequestParam(value = "search", defaultValue = "") String search, @PageableDefault Pageable pageable) {
         Page<Title> titles;
         if (!search.isEmpty()) {
             titles = titleService.findAllByTitleContaining(search, pageable);
