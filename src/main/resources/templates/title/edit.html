@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>EDIT</title>
-</head>
+<head th:replace="layout :: head"></head>
+
 <body>
 <br>
 <h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
 <hr>
 <br>
+<div  id="form" >
 <form  th:action="@{/update}" th:object="${titles}"
        method="post" novalidate="novalidate">
-    <td><input type="hidden" th:value="${id}" th:field="*{id}"></td>
-    <table border="1px">
+   <input type="hidden" th:value="${id}" th:field="*{id}">
+    <table id="title">
         <tr>
             <td><input type="text" th:field="*{title}"></td>
         </tr>
@@ -23,10 +22,18 @@
             <td><select name="theme">
                 <option th:each="themes : ${theme}" th:value="${themes.id}" th:text="${themes.theme}"></option>
             </select></td>
+        <tr>
+            <td><select th:field="*{author}">
+                <option th:each="authors : ${author}" th:value="${authors.id}" th:text="${authors.author}"></option>
+            </select></td>
         </tr>
     </table>
     <br>
-    <td><input type="submit" value="Update"></td>
+    <input type="submit" value="Update">
 </form>
+</div>
+<footer th:fragment="footer">
+    &copy; Gods.ZeZo
+</footer>
 </body>
 </html>

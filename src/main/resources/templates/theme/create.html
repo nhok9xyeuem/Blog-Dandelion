@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>EDIT</title>
-</head>
+<head th:replace="layout :: head"></head>
+
 <body>
 <br>
 <h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
 <hr>
 <br>
 <form th:action="@{/create-newTheme}" th:object="${themes}" method="post">
-    <table border="1px">
+    <table id="title">
         <tr>
             <td><input type="text" th:field="*{theme}" placeholder="Input Theme OF Blog"></td>
         </tr>
@@ -19,5 +17,8 @@
     <td><input type="submit" value="Create New Blog"></td>
     <br>
 </form>
+<footer th:fragment="footer">
+    &copy; Gods.ZeZo
+</footer>
 </body>
 </html>

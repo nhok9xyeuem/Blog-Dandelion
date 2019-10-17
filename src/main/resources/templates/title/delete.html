@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>DELETE</title>
-</head>
+<head th:replace="layout :: head"></head>
 <body>
 <hr>
 <h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
 <hr>
+<div id="form">
 <form th:action="@{/delete}" th:object="${title}" method="post">
-    <td><input type="hidden" th:value="${id}" th:field="*{id}"></td>
-    <table border="1px">
+    <input type="hidden" th:value="${id}" th:field="*{id}">
+    <table id="title">
         <tr>
+            <th>Title</th>
             <th th:text="${title.title}"></th>
         </tr>
         <tr>
+            <th>Theme</th>
             <th th:text="${title.getTheme().theme}"></th>
+        </tr>
+        <tr>
+            <th>Author</th>
+            <th th:text="${title.getAuthor().author}"></th>
         </tr>
     </table>
     <br>
-    <td><input type="submit" value="Delete"></td>
+    <input type="submit" value="Delete">
 </form>
+</div>
+<head th:replace="layout :: head"></head>
+<footer th:fragment="footer">
+    &copy; Gods.ZeZo
+</footer>
 </body>
 </html>

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Dandelion</title>
-</head>
+<head th:replace="layout :: head"></head>
+
 <body>
 <br>
 <h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
 <hr>
 <br>
 <h4 style="text-align: center ; color: red"  ><a th:text="${authors.get().author}"></a></h4>
+<p style="text-align: center ; color: darkred"><a th:href="@{/edit-author/__${authors.get().id}__}">edit</a>
+<a th:href="@{/delete-author/__${authors.get().id}__}">delete</a> </p>
 <br>
 <br>
 <br>
@@ -19,6 +19,8 @@
             <td th:text="${list.title}"></td>
         </tr>
     </p>
-</th:block>
+</th:block><footer th:fragment="footer">
+    &copy; Gods.ZeZo
+</footer>
 </body>
 </html>

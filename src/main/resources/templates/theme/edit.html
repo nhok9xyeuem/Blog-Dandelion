@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>EDIT THEM</title>
-</head>
+<head th:replace="layout :: head"></head>
+
 <body>
 <br>
 <h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
@@ -11,13 +9,15 @@
 <br>
 <form th:action="@{/change}" th:object="${themes}" method="post">
     <td><input type="hidden" th:value="${id}" th:field="*{id}"></td>
-    <table border="1px">
+    <table id="title">
         <tr>
             <td><input type="text" th:field="*{theme}"></td>
         </tr>
     </table>
     <br>
     <td><input type="submit" value="Update"></td>
-</form>
+</form><footer th:fragment="footer">
+    &copy; Gods.ZeZo
+</footer>
 </body>
 </html>

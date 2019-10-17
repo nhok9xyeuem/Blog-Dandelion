@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Dandelion</title>
-</head>
+<head th:replace="layout :: head"></head>
+
 <body>
 <br>
 <h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
 <hr>
 <br>
 <h4 style="text-align: center ; color: red"  ><a th:text="${themes.get().theme}"></a></h4>
+<p style="text-align: center ;color: darkred"><a th:href="@{/edit-theme/__${themes.get().id}__}">edit</a> ||
+    <a th:href="@{/delete-theme/__${themes.get().id}__}">delete</a> </p>
 <br>
 <br>
 <br>
-<th:block >
-    <p th:each="list:${listTitle}">
+<th:block>
+    <p th:each="list:${listTitle}" style="text-align:center">
         <tr>
-            <td th:text="${list.title}"></td>
+            <td th:text="${list.title}" th:href="@{/content/__${list.getId()}__}"></td>
         </tr>
     </p>
 </th:block>
+<footer th:fragment="footer">
+    &copy; Gods.ZeZo
+</footer>
 </body>
 </html>

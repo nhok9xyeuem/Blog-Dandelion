@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Dandelion</title>
-</head>
+<head th:replace="layout :: head"></head>
+
 <body>
 <br>
 <h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
 <hr>
 <br>
 <h4 style="text-align: center ; color: red"  ><a th:text="${title.get().title}"></a></h4>
-<p style="text-align: center ; color: blue"><a th:href="@{/edit-title/__${id}__}">edit</a> | <a th:href="@{/delete-title/__${id}__}">delete</a></p>
+<p style="text-align: center"><a th:href="@{/edit-title/__${id}__}">edit</a> | <a th:href="@{/delete-title/__${id}__}">delete</a></p>
 <br>
 <br>
 <br>
 <th:block >
-    <p  th:text="${title.get().content}"></p>
+    <p style="text-align: justify;" th:text="${title.get().content}"></p>
 </th:block>
-<div style="text-align: center; color: red" >
+<div id="form" >
     >>>>>>>>>> Author : <span th:text="${title.get().author.author}"></span><<<<<<<<<<
 </div>
+<footer th:fragment="footer">
+    &copy; Gods.ZeZo
+</footer>
 </body>
 </html>

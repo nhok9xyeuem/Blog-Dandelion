@@ -87,6 +87,7 @@ public class ThemeController {
     public ModelAndView listTitleByTheme(@PathVariable Long id ){
         Optional<Theme> theme = themeService.findById(id);
         List<Title> listTitle = theme.get().getTitles();
+        Title title = new Title();
         ModelAndView modelAndView = new ModelAndView("theme/listTitle");
         modelAndView.addObject("listTitle",listTitle);
         modelAndView.addObject("themes",theme);

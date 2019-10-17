@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>CREATE</title>
-</head>
+<head th:replace="layout :: head"></head>
+
 <body>
 <br>
-<h1 style="text-align: center;color: blue;border: red"><a href="/" >HOME PAGE</a> | <a href="/theme" >THEME</a> | <a href="/author" >AUTHOR</a></h1>
+<h1 style="text-align: center;color: blue;border: red"><a href="/">HOME PAGE</a> | <a href="/theme">THEME</a> | <a
+        href="/author">AUTHOR</a></h1>
 <hr>
 <br>
+<div id="form">
 <form th:action="@{/create}" th:object="${titles}" method="post">
 
-    <table border="1px">
+    <table id="title">
         <tr>
             <td><input type="text" th:field="*{title}"></td>
         </tr>
@@ -20,19 +20,23 @@
         </tr>
         <tr>
             <td><select th:field="*{theme}">
-                <option th:each="themes : ${theme}" th:value="${themes.id}" th:text="${themes.theme}"></option>
+            <option th:each="themes : ${theme}" th:value="${themes.id}" th:text="${themes.theme}"></option>
             </select></td>
         </tr>
         <tr>
-            <td><select th:field="*{author}">
-                <option th:each="authors : ${author}" th:value="${authors.id}" th:text="${authors.author}"></option>
+            <td>  <select th:field="*{author}">
+            <option th:each="authors : ${author}" th:value="${authors.id}" th:text="${authors.author}"></option>
             </select></td>
         </tr>
 
     </table>
     <br>
-        <td><input type="submit" value="Create New Blog"></td>
+    <input type="submit" value="Create New Blog">
     <br>
 </form>
+</div>
+<footer th:fragment="footer">
+    &copy; Gods.ZeZo
+</footer>
 </body>
 </html>

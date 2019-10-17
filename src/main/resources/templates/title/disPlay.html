@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" >
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Dandelion</title>
-</head>
+<head th:replace="layout :: head"></head>
 <body>
 <a href="/login" >LOGIN</a> || <a href="/logout" >LOGOUT</a>
 <br>
@@ -17,15 +14,17 @@
     <input type="submit" value="Search">
 </form>
 <br>
+<div class="notify">
 <th:block th:if="${message}">
     <h6 th:text="${message}"></h6>
 </th:block>
+</div>
 <br>
 <br>
 <h2 style="text-align: center ; color: red"  >BLOG DANDELION </h2>
 <br>
 <br>
-<table>
+<table id="title">
     <th:block th:each="title:${titles}">
         <tr >
             <td ><a th:text="${title.title}" th:href="@{/content/__${title.id}__}">
@@ -33,10 +32,13 @@
         </tr>
     </th:block>
 </table>
-<div>
+<div class="notify">
     <a th:href="@{'/'(search=${search},page=${titles.number - 1})}" th:if="${titles.hasPrevious()}">Previous</a>
     <span th:text="${titles.number + 1}"></span>/<span th:text="${titles.totalPages}"></span>
     <a th:href="@{'/'(search=${search},page=${titles.number + 1})}" th:if="${titles.hasNext()}">Next</a>
 </div>
+<footer th:fragment="footer">
+    &copy; Gods.ZeZo
+</footer>
 </body>
 </html>
